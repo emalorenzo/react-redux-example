@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Cyan from './Cyan'
+import Cyan from './screens/Counter/Cyan'
 import { connect } from 'react-redux';
-import CounterActions from './Actions/Counter'
+import CounterActions from './screens/Counter/actions'
+import ProductsList from './screens/Products/ProductsList'
 
 class App extends Component {
   constructor (props) {
@@ -26,7 +27,7 @@ class App extends Component {
           display: 'flex',
           flexDirection: 'row'
         }}>
-          <button onClick={() => this.props.add()}>Sumar +1</button>
+          <button onClick={() => this.props.add()}>{`Sumar ${this.props.total} +1`}</button>
           <button onClick={() => this.props.substract()}>Restar -1</button>
           <form onSubmit={event => this.handleSubmit(event)}>
             <input
@@ -39,10 +40,15 @@ class App extends Component {
         </div>
       
         <Cyan />
+        <ProductsList />
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  total: state.counter.total
+})
 
 const mapDispachToProps = dispatch => ({
   add: () => dispatch(CounterActions.Add()),
@@ -50,4 +56,4 @@ const mapDispachToProps = dispatch => ({
   substract: () => dispatch(CounterActions.Substract())
 })
 
-export default connect(null, mapDispachToProps)(App);
+export default connect(mapStateToProps, mapDispachToProps)(App);

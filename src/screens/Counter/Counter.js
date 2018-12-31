@@ -13,9 +13,9 @@ class Counter extends Component {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <h1>{this.props.total}</h1>
+        <h1>Counter {this.props.total}</h1>
       </div>
-    );
+    )
   }
 }
 
