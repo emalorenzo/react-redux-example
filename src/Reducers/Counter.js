@@ -12,6 +12,8 @@ export default (state = initialState, action) => {
       return { total: state.total + action.value }
     case CounterActionTypes.SUBSTRACT:
       return { total: state.total - 1 }
+    case CounterActionTypes.MULTIPLY_TWO:
+      return { total: state.total * 2 }
     default:
       return state;
   }

@@ -36,6 +36,7 @@ class App extends Component {
             />
             <input type="submit" value="Sumar" />
           </form>
+          <button onClick={() => this.props.multiplyTwo()}>Multiplicar por dos</button>
         </div>
       
         <Cyan />
@@ -47,7 +48,8 @@ class App extends Component {
 const mapDispachToProps = dispatch => ({
   add: () => dispatch(CounterActions.Add()),
   addValue: value => dispatch(CounterActions.AddValue(value)),
-  substract: () => dispatch(CounterActions.Substract())
+  substract: () => dispatch(CounterActions.Substract()),
+  multiplyTwo: () => dispatch(CounterActions.MultiplyTwo())
 })
 
 export default connect(null, mapDispachToProps)(App);
